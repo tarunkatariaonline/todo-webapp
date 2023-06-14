@@ -25,6 +25,8 @@ const TodoAdd = () => {
                 
 
             }))
+
+            setItem("")
     }}>
     <HStack w={"100%"} justifyContent={"center"} mt={"20px"} >
  <HStack w={"80%"} border={"2px solid #525966"} h={"35px"} shadow={"md"} borderRadius={"5px"}>
