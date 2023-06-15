@@ -3,17 +3,21 @@ import React, { useState } from 'react'
 import {AiOutlineMenu} from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
 import { nanoid } from '@reduxjs/toolkit'
+import { useToast } from '@chakra-ui/react'
 
 import { TodoAddFunction } from '../Redux/Slice/TodoAddSlice'
 
 const TodoAdd = () => {
 
+  const toast =useToast()
     const [item,setItem] = useState("")
     const dispatch = useDispatch()
 
   return (
     <form onSubmit={(e)=>{
             e.preventDefault();
+
+            if(item){
             console.log("from submitted")
            
    
@@ -27,6 +31,16 @@ const TodoAdd = () => {
             }))
 
             setItem("")
+
+          }else{
+            toast({
+              title: 'Error',
+              description: "Please Enter Todo Task.",
+              status: 'error',
+              duration: 9000,
+              isClosable: true,
+            })
+          }
     }}>
     <HStack w={"100%"} justifyContent={"center"} mt={"20px"} >
  <HStack w={"80%"} border={"2px solid #525966"} h={"35px"} shadow={"md"} borderRadius={"5px"}>
